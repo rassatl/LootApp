@@ -17,7 +17,7 @@ class Inventory: ObservableObject {
         LootItem(id:UUID(),name: "Boost de vitesse", type: .magic, rarity: .legendary, attackStrength: nil, game: availableGames[3]),
         LootItem(id:UUID(),name: "Potion de poison", type: .poison, rarity: .legendary, attackStrength: 20, game: availableGames[2]),
         LootItem(id:UUID(),name: "Marteau de Thor", type: .thunder, rarity: .unique, attackStrength: 40, game: availableGames[0]),
-        LootItem(id:UUID(),name: "Pouvoir du dernier mâitre de l'air", type: .wind, rarity: .unique, attackStrength: 36, game: availableGames[0]),
+        LootItem(id:UUID(),name: "Pouvoir du dernier maître de l'air", type: .wind, rarity: .unique, attackStrength: 36, game: availableGames[0]),
         LootItem(id:UUID(),name: "Pouvoir de glace", type: .ice, rarity: .unique, attackStrength: 45, game: availableGames[0]),
         LootItem(id:UUID(),name: "Pouvoir de feu", type: .fire, rarity: .unique, attackStrength: 46, game: availableGames[0]),
     ]
@@ -38,18 +38,7 @@ struct ContentView: View {
                     NavigationLink {
                         LootDetailView(item: item)
                     } label: {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Circle()
-                                    .fill(Color(item.rarity.color))
-                                    .frame(width: 12, height: 12)
-                                Text("\(item.name) x\(item.quantity)")
-                                    .font(.headline)
-                                Spacer()
-                                Text("\(item.type.rawValue)")
-                            }
-                        }
-                        .id(item.id)
+                        LootRow(item: item)
                     }
                 }
             }
@@ -76,4 +65,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
