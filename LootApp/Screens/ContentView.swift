@@ -6,6 +6,22 @@
 //
 
 import SwiftUI
+import Charts
+
+enum EnumSortBy: String, CaseIterable {
+    case name
+    case rarity
+
+    func sortList(_ item1: LootItem, _ item2: LootItem) -> Bool {
+        switch self {
+        case .name:
+            return item1.name < item2.name
+        case .rarity:
+            return item1.rarity.rawValue < item2.rarity.rawValue
+        }
+    }
+}
+
 
 class Inventory: ObservableObject {
     @Published var loot = [
@@ -30,20 +46,53 @@ class Inventory: ObservableObject {
 struct ContentView: View {
     @State var showAddItemView = false
     @StateObject var inventory = Inventory()
+    @State private var enumSortBy: EnumSortBy = .name
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(inventory.loot) { item in
-                    NavigationLink {
-                        LootDetailView(item: item)
-                    } label: {
-                        LootRow(item: item)
+                Section("Loot") {
+                    ForEach(inventory.loot.sorted(by: enumSortBy.sortList)) { item in
+                        NavigationLink {
+                            LootDetailView(item: item)
+                        } label: {
+                            LootRow(item: item)
+                        }
+                    }
+                }
+                Section("Statistiques"){
+                    Chart {
+                        ForEach(inventory.loot) { item in
+                            BarMark(
+                                x: .value("Shape Type", item.name),
+                                y: .value("Total Count", item.quantity)
+                            ).foregroundStyle(item.rarity.color)
+                        }
+                    }
+                }
+                Section("Vos jeux"){
+                    ScrollView(.horizontal) {
+                        HStack{
+                            ForEach(availableGames, id: \.self) { game in
+                                HStack {
+                                    LootImageGame(image: game.coverName)
+                                    Text("\(game.name)")
+                                }
+                            }
+                        }
                     }
                 }
             }
             .navigationBarTitle("👝 Inventaire")
             .toolbar(content: {
+                ToolbarItem(placement: ToolbarItemPlacement.automatic) {
+                    Picker("Sort By", selection: $enumSortBy) {
+                        Text("Name").tag(EnumSortBy.name)
+                        Text("Rarity").tag(EnumSortBy.rarity)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding()
+                }
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
                     Button(action: {
                         showAddItemView.toggle()
@@ -58,7 +107,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

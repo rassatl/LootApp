@@ -34,6 +34,7 @@ enum Rarity:String, CaseIterable {
 }
 
 struct AddItemView: View {
+    @State private var showAlert = false
     @State private var nameValue = ""
     @State private var rarityValue: Rarity = Rarity.common
     @State private var gameValue: Game = Game.emptyGame
@@ -100,11 +101,21 @@ struct AddItemView: View {
                     }
                 }
                 Button(action: {
-                    inventaire.addItem(item: LootItem(id: UUID(), quantity: quantityGameValue, name: nameValue, type: typeValue, rarity: rarityValue, attackStrength: attackStrengthValue, game: gameValue))
-                    dismiss()
+                    if (nameValue.count >= 3 && typeValue.rawValue != ItemType.unknown.rawValue && gameValue != Game.emptyGame) {
+                        inventaire.addItem(item: LootItem(id: UUID(), quantity: quantityGameValue, name: nameValue, type: typeValue, rarity: rarityValue, attackStrength: attackStrengthValue, game: gameValue))
+                        dismiss()
+                    }else{
+                        showAlert = true
+                    }
                 }, label: {
                     Text("Ajouter l'objet")
-                })
+                }).alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Erreur de renseignement ⚠️"),
+                        message: Text("\nLe nom de l’item doit faire au moins 3 caractères et ne doit pas être vide !\n\n" +
+                                        "Le type et le jeu doivent être renseigné !")
+                    )
+                }
             }
             .navigationBarTitle("Ajouter un Loot")
         }

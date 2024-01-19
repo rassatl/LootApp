@@ -66,8 +66,8 @@
 		B470EF072B5A7AF3000C2C4C /* LootApp */ = {
 			isa = PBXGroup;
 			children = (
-				B470EF252B5AD639000C2C4C /* Window */,
-				B470EF242B5AD5E4000C2C4C /* ExtractedStruct */,
+				B470EF252B5AD639000C2C4C /* Screens */,
+				B470EF242B5AD5E4000C2C4C /* Views */,
 				B470EF192B5A97A8000C2C4C /* LootItem.swift */,
 				B470EF082B5A7AF3000C2C4C /* LootAppApp.swift */,
 				B470EF0C2B5A7AF5000C2C4C /* Assets.xcassets */,
@@ -86,24 +86,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B470EF242B5AD5E4000C2C4C /* ExtractedStruct */ = {
+		B470EF242B5AD5E4000C2C4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B470EF212B5AD53F000C2C4C /* LootInformation.swift */,
 				B470EF1F2B5AD413000C2C4C /* LootRow.swift */,
 				B470EF282B5AD8B7000C2C4C /* LootImageGame.swift */,
 			);
-			path = ExtractedStruct;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		B470EF252B5AD639000C2C4C /* Window */ = {
+		B470EF252B5AD639000C2C4C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				B470EF172B5A817D000C2C4C /* AddItemView.swift */,
 				B470EF0A2B5A7AF3000C2C4C /* ContentView.swift */,
 				B470EF1D2B5AB639000C2C4C /* LootDetailView.swift */,
 			);
-			path = Window;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
