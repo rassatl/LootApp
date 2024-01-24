@@ -18,6 +18,7 @@
 		B470EF202B5AD413000C2C4C /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470EF1F2B5AD413000C2C4C /* LootRow.swift */; };
 		B470EF222B5AD53F000C2C4C /* LootInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470EF212B5AD53F000C2C4C /* LootInformation.swift */; };
 		B470EF292B5AD8B7000C2C4C /* LootImageGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470EF282B5AD8B7000C2C4C /* LootImageGame.swift */; };
+		B4EB9F502B6161DE00F59C89 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EB9F4F2B6161DE00F59C89 /* OnBoardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B470EF1F2B5AD413000C2C4C /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
 		B470EF212B5AD53F000C2C4C /* LootInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootInformation.swift; sourceTree = "<group>"; };
 		B470EF282B5AD8B7000C2C4C /* LootImageGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootImageGame.swift; sourceTree = "<group>"; };
+		B4EB9F4F2B6161DE00F59C89 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				B470EF172B5A817D000C2C4C /* AddItemView.swift */,
 				B470EF0A2B5A7AF3000C2C4C /* ContentView.swift */,
 				B470EF1D2B5AB639000C2C4C /* LootDetailView.swift */,
+				B4EB9F4F2B6161DE00F59C89 /* OnBoardingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				B470EF292B5AD8B7000C2C4C /* LootImageGame.swift in Sources */,
 				B470EF0B2B5A7AF3000C2C4C /* ContentView.swift in Sources */,
 				B470EF202B5AD413000C2C4C /* LootRow.swift in Sources */,
+				B4EB9F502B6161DE00F59C89 /* OnBoardingView.swift in Sources */,
 				B470EF1C2B5A9990000C2C4C /* Game.swift in Sources */,
 				B470EF182B5A817D000C2C4C /* AddItemView.swift in Sources */,
 				B470EF222B5AD53F000C2C4C /* LootInformation.swift in Sources */,

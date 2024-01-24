@@ -95,6 +95,13 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
                     Button(action: {
+                        UserDefaults.standard.set(false, forKey: "isOnboardingDone")
+                    }, label: {
+                            Image(systemName: "arrow.counterclockwise.circle.fill")
+                        })
+                }
+                ToolbarItem(placement: ToolbarItemPlacement.automatic) {
+                    Button(action: {
                         showAddItemView.toggle()
                     }, label: {
                         Image(systemName: "plus.circle.fill")
