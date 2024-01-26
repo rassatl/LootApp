@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct OnBoardingView: View {
+struct OnboardingPageView: View {
     var title: String
     var img: String
     var subtitle: String
+    @Binding var step: Int
+    var nextStep: Int
     
     var body: some View {
         VStack {
@@ -26,7 +28,7 @@ struct OnBoardingView: View {
                 .frame(width: 100, height: 100)
                 .font(.system(size: 80))
                 .padding()
-                .background(Color.blue)
+                .background(.blue)
                 .foregroundColor(.white)
                 .clipShape(Circle())
             
@@ -37,13 +39,17 @@ struct OnBoardingView: View {
                 .padding()
 
             Button(action: {
-                UserDefaults.standard.set(true, forKey: "isOnboardingDone")
+                if nextStep == 3{
+                    UserDefaults.standard.set(true, forKey: "isOnboardingDone")
+                }else{
+                    step = nextStep
+                }
             }) {
-                Text("Suivant")
+                Text(nextStep == 3 ? "Commencer" : "Suivant")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.blue)
+                    .background(.blue)
                     .cornerRadius(10)
             }
             .padding()
@@ -51,12 +57,12 @@ struct OnBoardingView: View {
     }
 }
 
-struct OnBoardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoardingView(
-            title: "Gérer ses loots",
-            img: "gym.bag.fill",
-            subtitle: "Ajouter facilement vos trouvailles et vos achats à votre collection personnelle"
-        )
-    }
-}
+//struct OnboardingPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnboardingPageView(
+//            title: "Gérer ses loots",
+//            img: "gym.bag.fill",
+//            subtitle: "Ajouter facilement vos trouvailles et vos achats à votre collection personnelle", step:
+//        )
+//    }
+//}

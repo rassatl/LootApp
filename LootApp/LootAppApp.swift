@@ -40,21 +40,22 @@ struct LootAppApp: App {
             if isOnboardingDone {
                 ContentView()
             } else {
-                OnboardingWrapperView()
+                OnboardingView()
             }
         }
     }
 }
 
-struct OnboardingWrapperView: View {
+struct OnboardingView: View {
     @State var step: Int = 0
     var body: some View {
         TabView(selection: $step,
                 content:  {
-            OnBoardingView(title: firstItem.title, img: firstItem.img, subtitle: firstItem.subtitle).tabItem { Text("Tab Label 1") }.tag(1)
-            OnBoardingView(title: secondItem.title, img: secondItem.img, subtitle: secondItem.subtitle).tabItem { Text("Tab Label 2") }.tag(2)
-            OnBoardingView(title: thirdItem.title, img: thirdItem.img, subtitle: thirdItem.subtitle).tabItem { Text("Tab Label 3") }.tag(3)
+            OnboardingPageView(title: firstItem.title, img: firstItem.img, subtitle: firstItem.subtitle, step: $step, nextStep: 1).tabItem {}.tag(0)
+            OnboardingPageView(title: secondItem.title, img: secondItem.img, subtitle: secondItem.subtitle, step: $step, nextStep: 2).tabItem {}.tag(1)
+            OnboardingPageView(title: thirdItem.title, img: thirdItem.img, subtitle: thirdItem.subtitle, step: $step, nextStep: 3).tabItem {}.tag(2)
         })
+        
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
